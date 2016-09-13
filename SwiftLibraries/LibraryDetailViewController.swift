@@ -12,7 +12,7 @@ import MapKit
 
 class LibraryDetailViewController: UIViewController {
     
-    @IBOutlet weak var libraryNameLabel: UILabel!
+    @IBOutlet weak var libraryPhoneTextView: UITextView!
     @IBOutlet weak var libraryAddressLabel: UILabel!
     @IBOutlet weak var libraryHoursLabel: UILabel!
     @IBOutlet weak var libraryMapView: MKMapView!
@@ -22,7 +22,7 @@ class LibraryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = detailLibrary.name
-        libraryNameLabel.text = detailLibrary.name
+        libraryPhoneTextView.text = "Phone: \(detailLibrary.phone)"
         libraryAddressLabel.text = detailLibrary.address
         libraryHoursLabel.text = detailLibrary.hoursOfOperation.formattedLibraryHours
         annotateMap()

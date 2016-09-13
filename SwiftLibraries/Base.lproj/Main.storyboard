@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAC-2W-Agy">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAC-2W-Agy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -70,15 +70,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-Ig-F9N">
-                                <rect key="frame" x="20" y="79" width="560" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="2L3-w4-CFJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w78-4x-IvX">
                                 <rect key="frame" x="20" y="109" width="560" height="22"/>
                                 <constraints>
@@ -94,28 +85,38 @@
                                     <constraint firstAttribute="width" secondItem="h68-VS-E63" secondAttribute="height" multiplier="28:17" id="xU9-1b-l1Z"/>
                                 </constraints>
                             </mapView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Phone Number" translatesAutoresizingMaskIntoConstraints="NO" id="zwZ-HV-vw9">
+                                <rect key="frame" x="16" y="67" width="564" height="36.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36.5" id="P0K-MG-H2i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="h68-VS-E63" firstAttribute="top" secondItem="4iH-HM-23Y" secondAttribute="bottom" constant="8" id="3ae-U6-KKX"/>
                             <constraint firstItem="h68-VS-E63" firstAttribute="leading" secondItem="Cqw-IN-GIi" secondAttribute="leading" constant="20" id="7lj-o4-9z6"/>
-                            <constraint firstItem="9Nt-Ig-F9N" firstAttribute="leading" secondItem="Cqw-IN-GIi" secondAttribute="leading" constant="20" id="CPq-tD-b0Z"/>
-                            <constraint firstItem="9Nt-Ig-F9N" firstAttribute="top" secondItem="vfo-Sf-2Bv" secondAttribute="bottom" constant="15" id="JEx-PC-780"/>
                             <constraint firstItem="4iH-HM-23Y" firstAttribute="leading" secondItem="Cqw-IN-GIi" secondAttribute="leading" constant="20" id="KDc-cV-Zzu"/>
                             <constraint firstAttribute="trailing" secondItem="h68-VS-E63" secondAttribute="trailing" constant="20" id="O3D-1W-QvR"/>
                             <constraint firstAttribute="trailing" secondItem="w78-4x-IvX" secondAttribute="trailing" constant="20" id="S1X-rs-54X"/>
+                            <constraint firstAttribute="trailing" secondItem="zwZ-HV-vw9" secondAttribute="trailing" constant="20" id="SJo-Eq-fGu"/>
                             <constraint firstItem="4iH-HM-23Y" firstAttribute="top" secondItem="w78-4x-IvX" secondAttribute="bottom" constant="8" id="U06-Kz-cxc"/>
                             <constraint firstAttribute="trailing" secondItem="4iH-HM-23Y" secondAttribute="trailing" constant="20" id="Umx-dw-RGl"/>
                             <constraint firstItem="w78-4x-IvX" firstAttribute="leading" secondItem="Cqw-IN-GIi" secondAttribute="leading" constant="20" id="WkJ-i1-lUF"/>
-                            <constraint firstAttribute="trailing" secondItem="9Nt-Ig-F9N" secondAttribute="trailing" constant="20" id="gyE-d0-1ZR"/>
-                            <constraint firstItem="w78-4x-IvX" firstAttribute="top" secondItem="9Nt-Ig-F9N" secondAttribute="bottom" constant="8" id="yMD-A1-xBi"/>
+                            <constraint firstItem="w78-4x-IvX" firstAttribute="top" secondItem="zwZ-HV-vw9" secondAttribute="bottom" constant="5.5" id="icS-4q-0dh"/>
+                            <constraint firstItem="zwZ-HV-vw9" firstAttribute="top" secondItem="vfo-Sf-2Bv" secondAttribute="bottom" constant="3" id="wPB-cS-REL"/>
+                            <constraint firstItem="zwZ-HV-vw9" firstAttribute="leading" secondItem="Cqw-IN-GIi" secondAttribute="leading" constant="16" id="z1C-rp-Ip7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="libraryAddressLabel" destination="w78-4x-IvX" id="fc4-f9-Myz"/>
                         <outlet property="libraryHoursLabel" destination="4iH-HM-23Y" id="GTA-wb-YV7"/>
                         <outlet property="libraryMapView" destination="h68-VS-E63" id="EAW-nf-s7J"/>
-                        <outlet property="libraryNameLabel" destination="9Nt-Ig-F9N" id="8qj-Hs-PEh"/>
+                        <outlet property="libraryPhoneTextView" destination="zwZ-HV-vw9" id="WIr-tc-Syb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIc-5g-Lo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
