@@ -78,11 +78,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h68-VS-E63">
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="h68-VS-E63" secondAttribute="height" multiplier="28:17" constant="-35.588235294117624" id="xU9-1b-l1Z"/>
-                                </constraints>
-                            </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Phone Number" translatesAutoresizingMaskIntoConstraints="NO" id="zwZ-HV-vw9">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -92,6 +87,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
                             </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h68-VS-E63">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="h68-VS-E63" secondAttribute="height" multiplier="28:17" constant="-35.588235294117624" id="xU9-1b-l1Z"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
