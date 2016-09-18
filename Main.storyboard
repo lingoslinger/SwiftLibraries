@@ -58,11 +58,11 @@
                         <viewControllerLayoutGuide type="bottom" id="FR8-v4-THS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4kY-6W-yj3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-eb-OKA">
-                                <rect key="frame" x="20" y="241" width="280" height="21"/>
+                                <rect key="frame" x="20" y="391" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ofB-N8-2mS"/>
                                 </constraints>
@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLw-Wf-YrJ">
-                                <rect key="frame" x="20" y="308" width="280" height="168"/>
+                                <rect key="frame" x="20" y="458" width="560" height="168"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="PBj-zB-bAW"/>
                                 </constraints>
@@ -80,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Phone number" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4el-pb-D35">
-                                <rect key="frame" x="16" y="265" width="240" height="35"/>
+                                <rect key="frame" x="16" y="415" width="520" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="PYU-m6-vpd"/>
@@ -90,7 +90,7 @@
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
                             </textView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Oi2-Os-PbJ">
-                                <rect key="frame" x="20" y="72" width="280" height="150"/>
+                                <rect key="frame" x="20" y="72" width="560" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Oi2-Os-PbJ" secondAttribute="height" multiplier="28:15" id="BqO-6b-uZz"/>
                                 </constraints>
@@ -112,7 +112,6 @@
                             <constraint firstItem="Oi2-Os-PbJ" firstAttribute="top" secondItem="yBO-Vx-ZNE" secondAttribute="bottom" constant="8" id="zO6-Zd-MoH"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="libraryAddressLabel" destination="9pa-eb-OKA" id="ML1-kl-vzI"/>
                         <outlet property="libraryHoursLabel" destination="iLw-Wf-YrJ" id="wqD-qr-AV7"/>
