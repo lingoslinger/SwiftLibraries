@@ -8,17 +8,24 @@
 
 import UIKit
 
-class LibraryURLSession: NSURLSession {
-
-    func sendRequest(completionHandler : SessionCompletionHandler) {
-        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        guard let URL = NSURL(string: "https://data.cityofchicago.org/resource/x8fc-8rcq.json") else {return}
-        let request = NSMutableURLRequest(URL: URL)
-        request.HTTPMethod = "GET"
-        let task = session.dataTaskWithRequest(request, completionHandler: completionHandler)
+class LibraryURLSession: URLSession {
+    func sendRequest(_ completionHandler: (@escaping(SessionCompletionHandler))) {
+        let sessionConfig = URLSessionConfiguration.default
+        
+        /* Create session, and optionally set a URLSessionDelegate. */
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        /* Create the Request:
+         My API (GET https://data.cityofchicago.org/resource/x8fc-8rcq.json)
+         */
+        
+        let var URL = URL(string: "https://data.cityofchicago.org/resource/x8fc-8rcq.json") else {return}
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+        
+        /* Start a new Task */
+        let task = session.dataTask(with: request, completionHandler:completionHandler)
         task.resume()
-        session.finishTasksAndInvalidate();
+        session.finishTasksAndInvalidate()
     }
-
 }

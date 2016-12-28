@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-typealias SessionCompletionHandler = (data : NSData?, response : NSURLResponse?, error : NSError?) -> Void
+typealias SessionCompletionHandler = (_ data : Data?, _ response : URLResponse?, _ error : Error?) -> Void
 
 class LibraryTableViewController: UITableViewController {
     
@@ -20,17 +20,17 @@ class LibraryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let libraryURLSession = LibraryURLSession();
-        let completionHander : SessionCompletionHandler = {(data : NSData?, response : NSURLResponse?, error : NSError?) -> Void in
+        let completionHander : SessionCompletionHandler = {(data : Data?, response : URLResponse?, error : Error?) -> Void in
             if (error == nil) {
                 // Success
-                let statusCode = (response as! NSHTTPURLResponse).statusCode
+                let statusCode = (response as! HTTPURLResponse).statusCode
                 print("URL Session Task Succeeded: HTTP \(statusCode)")
-                let responseArray : NSArray = data!.jsonArrayValue
+                let responseArray = data!.jsonArrayValue
                 for libraryDict in responseArray {
-                    let library = Library.init(fromDictionary: libraryDict as! NSDictionary)
-                    self.tempLibraryArray.addObject(library)
+                    let library = Library.init(fromDictionary: libraryDict as NSDictionary)
+                    self.tempLibraryArray.add(library)
                 }
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     self.setupSectionsWithLibraryArray()
                     self.tableView.reloadData()
                 })
@@ -49,44 +49,44 @@ class LibraryTableViewController: UITableViewController {
     }
 
 // MARK: UITableViewDataSource methods
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionTitle = self.sectionTitles[section]
-        let sectionArray = self.sectionDictionary.objectForKey(sectionTitle) as! NSArray
+        let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
         return sectionArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LibraryTableViewCell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryTableViewCell")
         let sectionTitle = self.sectionTitles[indexPath.section]
-        let sectionArray = self.sectionDictionary.objectForKey(sectionTitle) as! NSArray
+        let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
         let library = sectionArray[indexPath.row]
-        cell?.textLabel?.text = library.name
+        cell?.textLabel?.text = (library as AnyObject).name
         return cell!
     }
     
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionTitles[section] as? String
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sectionTitles as? [String]
     }
     
 // MARK: navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LibraryDetailViewController" {
             let indexPath = self.tableView.indexPathForSelectedRow!
-            let detailViewController = segue.destinationViewController as! LibraryDetailViewController
+            let detailViewController = segue.destination as! LibraryDetailViewController
             let sectionTitle = self.sectionTitles[indexPath.section]
-            let sectionArray = self.sectionDictionary.objectForKey(sectionTitle) as! NSArray
+            let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
             detailViewController.detailLibrary = sectionArray[indexPath.row] as! Library
         }
     }
@@ -95,12 +95,12 @@ class LibraryTableViewController: UITableViewController {
     func setupSectionsWithLibraryArray() {
         for element in self.tempLibraryArray {
             if let library : Library = (element as? Library) {
-                let firstLetterOfName = (library.name as NSString).substringToIndex(1)
-                if (self.sectionDictionary.objectForKey(firstLetterOfName) == nil) {
+                let firstLetterOfName = (library.name as NSString).substring(to: 1)
+                if (self.sectionDictionary.object(forKey: firstLetterOfName) == nil) {
                     let sectionArray : NSMutableArray = [library]
-                    self.sectionDictionary.setObject(sectionArray, forKey: firstLetterOfName)
+                    self.sectionDictionary.setObject(sectionArray, forKey: firstLetterOfName as NSCopying)
                 } else {
-                    self.sectionDictionary[firstLetterOfName]?.addObject(library)
+                    (self.sectionDictionary[firstLetterOfName] as! NSMutableArray).add(library)
                 }
                 
             } else {
@@ -108,8 +108,6 @@ class LibraryTableViewController: UITableViewController {
             }
         }
         let unsortedLetters = self.sectionDictionary.allKeys as! [String]
-        self.sectionTitles = unsortedLetters.sort({ (a : String, b: String) -> Bool in
-            return a < b
-        })
+        self.sectionTitles = unsortedLetters.sorted() as NSArray
     }
 }

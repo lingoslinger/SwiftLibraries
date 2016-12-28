@@ -14,7 +14,7 @@ public typealias JSONObject = [String:AnyObject]
 /**
  Gives the ability to convert NSData objects to JSONObject type
  */
-public extension NSData
+public extension Data
 {
     
     /**
@@ -26,7 +26,7 @@ public extension NSData
      */
     public var jsonArrayValue : [JSONObject] {
         guard
-            let json     = try? NSJSONSerialization.JSONObjectWithData(self, options: []),
+            let json     = try? JSONSerialization.jsonObject(with: self, options: []),
             let objects  = json as? [JSONObject]
             else
         {
@@ -44,7 +44,7 @@ public extension NSData
      */
     public var jsonDictionaryValue : JSONObject? {
         guard
-            let json     = try? NSJSONSerialization.JSONObjectWithData(self, options: []),
+            let json     = try? JSONSerialization.jsonObject(with: self, options: []),
             let object  = json as? JSONObject
             else
         {

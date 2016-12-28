@@ -14,27 +14,27 @@ public extension String {
         let dayOfWeekArray = ["M", "TU", "W", "TH", "F", "SA", "SU"]
         let formattedDayOfWeekArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         
-        let hourStringArray = self.componentsSeparatedByString("; ")
+        let hourStringArray = self.components(separatedBy: "; ")
         for rawHoursString in hourStringArray {
-            let seperatedDaysAndHours = rawHoursString.componentsSeparatedByString(": ")
+            let seperatedDaysAndHours = rawHoursString.components(separatedBy: ": ")
             let seperatedDays = seperatedDaysAndHours[0]
             let seperatedHours = seperatedDaysAndHours[1]
             var abbreviatedDays : NSMutableArray = []
-            if seperatedDaysAndHours[0].containsString("-") {
-                let startStopHoursDayArray = seperatedDays.componentsSeparatedByString("-")
-                let startIndex : Int = dayOfWeekArray.indexOf(startStopHoursDayArray[0])!
-                let stopIndex : Int = dayOfWeekArray.indexOf(startStopHoursDayArray[1])!
+            if seperatedDaysAndHours[0].contains("-") {
+                let startStopHoursDayArray = seperatedDays.components(separatedBy: "-")
+                let startIndex : Int = dayOfWeekArray.index(of: startStopHoursDayArray[0])!
+                let stopIndex : Int = dayOfWeekArray.index(of: startStopHoursDayArray[1])!
                 for j in startIndex...stopIndex {
-                    abbreviatedDays.addObject(dayOfWeekArray[j])
+                    abbreviatedDays.add(dayOfWeekArray[j])
                 }
             } else {
-                abbreviatedDays = NSMutableArray.init(array: seperatedDays.componentsSeparatedByString(", "))
+                abbreviatedDays = NSMutableArray.init(array: seperatedDays.components(separatedBy: ", "))
             }
 
             let formattedHoursString = formattedHoursForAbbreviatedHours(seperatedHours)
             for rawDay in abbreviatedDays {
-                let abbreviatedDay = rawDay.stringByReplacingOccurrencesOfString(" ", withString: "")
-                let dayIndex = dayOfWeekArray.indexOf(abbreviatedDay)
+                let abbreviatedDay = (rawDay as AnyObject).replacingOccurrences(of: " ", with: "")
+                let dayIndex = dayOfWeekArray.index(of: abbreviatedDay)
                 hoursArray[dayIndex!] = formattedHoursString
             }
         }
@@ -51,21 +51,21 @@ public extension String {
         return returnString
     }
     
-    func formattedHoursForAbbreviatedHours(abbreviatedHours : String) -> String {
+    func formattedHoursForAbbreviatedHours(_ abbreviatedHours : String) -> String {
         if abbreviatedHours == "Closed" {
             return abbreviatedHours
         }
-        let openCloseArray = abbreviatedHours.componentsSeparatedByString("-")
+        let openCloseArray = abbreviatedHours.components(separatedBy: "-")
         let openTimeString = formattedTimeForAbbreviatedTime(openCloseArray[0])
         let closeTimeString = formattedTimeForAbbreviatedTime(openCloseArray[1])
         return openTimeString + " - " + closeTimeString
     }
     
-    func formattedTimeForAbbreviatedTime(abbreviatedTime : String) -> String {
+    func formattedTimeForAbbreviatedTime(_ abbreviatedTime : String) -> String {
         let abbreviatedTimeLength = (abbreviatedTime as NSString).length
         let endIndex = abbreviatedTimeLength == 4 ? 2 : 1
-        let numericHourString = (abbreviatedTime as NSString).substringToIndex(endIndex)
-        let ampmString = (abbreviatedTime as NSString).substringFromIndex(abbreviatedTimeLength - 2)
+        let numericHourString = (abbreviatedTime as NSString).substring(to: endIndex)
+        let ampmString = (abbreviatedTime as NSString).substring(from: abbreviatedTimeLength - 2)
         return numericHourString + ":00" + ampmString
     }
 }
