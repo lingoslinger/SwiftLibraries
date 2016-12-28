@@ -22,7 +22,7 @@ class LibraryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = detailLibrary.name
-        libraryPhoneTextView.text = "Phone: \(detailLibrary.phone)"
+        libraryPhoneTextView.text = "Phone: \(detailLibrary.phone!)"
         libraryAddressLabel.text = detailLibrary.address
         libraryHoursLabel.text = detailLibrary.hoursOfOperation.formattedLibraryHours
         annotateMap()
