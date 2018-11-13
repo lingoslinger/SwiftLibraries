@@ -21,7 +21,7 @@ class LibraryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = detailLibrary.name
+        title = detailLibrary.libraryName
         libraryPhoneTextView.text = "Phone: \(detailLibrary.phone!)"
         libraryAddressLabel.text = detailLibrary.address
         libraryHoursLabel.text = detailLibrary.hoursOfOperation.formattedLibraryHours
@@ -37,7 +37,7 @@ class LibraryDetailViewController: UIViewController {
         
         let point = MKPointAnnotation.init()
         point.coordinate = zoomLocation
-        point.title = detailLibrary.name
+        point.title = detailLibrary.libraryName
         libraryMapView.addAnnotation(point)
         libraryMapView.setRegion(libraryMapView.regionThatFits(viewRegion), animated: true)
     }

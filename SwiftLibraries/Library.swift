@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Library : NSObject {
+@objc class Library : NSObject {
 
 	var address : String!
 	var city : String!
 	var cybernavigator : String!
 	var hoursOfOperation : String!
 	var location : Location!
-	var name : String!
+	var libraryName : String!
 	var phone : String!
 	var state : String!
 	var teacherInTheLibrary : String!
@@ -30,7 +30,7 @@ class Library : NSObject {
 		if let locationData = dictionary["location"] as? NSDictionary{
 			location = Location(fromDictionary: locationData)
 		}
-		name = dictionary["name_"] as? String
+		libraryName = dictionary["name_"] as? String
 		phone = dictionary["phone"] as? String
 		state = dictionary["state"] as? String
 		teacherInTheLibrary = dictionary["teacher_in_the_library"] as? String
@@ -58,8 +58,8 @@ class Library : NSObject {
 		if location != nil{
 			dictionary["location"] = location.toDictionary()
 		}
-		if name != nil{
-			dictionary["name_"] = name
+		if libraryName != nil{
+			dictionary["name_"] = libraryName
 		}
 		if phone != nil{
 			dictionary["phone"] = phone

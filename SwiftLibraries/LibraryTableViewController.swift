@@ -63,8 +63,8 @@ class LibraryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryTableViewCell")
         let sectionTitle = self.sectionTitles[indexPath.section]
         let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
-        let library = sectionArray[indexPath.row]
-        cell?.textLabel?.text = (library as AnyObject).name
+        let library = sectionArray[indexPath.row] as! Library
+        cell?.textLabel?.text = library.libraryName
         return cell!
     }
     
@@ -87,7 +87,7 @@ class LibraryTableViewController: UITableViewController {
             let detailViewController = segue.destination as! LibraryDetailViewController
             let sectionTitle = self.sectionTitles[indexPath.section]
             let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
-            detailViewController.detailLibrary = sectionArray[indexPath.row] as! Library
+            detailViewController.detailLibrary = sectionArray[indexPath.row] as? Library
         }
     }
     
@@ -95,7 +95,7 @@ class LibraryTableViewController: UITableViewController {
     func setupSectionsWithLibraryArray() {
         for element in self.tempLibraryArray {
             if let library : Library = (element as? Library) {
-                let firstLetterOfName = (library.name as NSString).substring(to: 1)
+                let firstLetterOfName = (library.libraryName as NSString).substring(to: 1)
                 if (self.sectionDictionary.object(forKey: firstLetterOfName) == nil) {
                     let sectionArray : NSMutableArray = [library]
                     self.sectionDictionary.setObject(sectionArray, forKey: firstLetterOfName as NSCopying)
