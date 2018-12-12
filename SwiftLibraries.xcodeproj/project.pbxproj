@@ -12,7 +12,6 @@
 		9D927DE21D41536B00597C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D927DE11D41536B00597C91 /* Assets.xcassets */; };
 		9D927DE51D41536B00597C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D927DE31D41536B00597C91 /* LaunchScreen.storyboard */; };
 		9D927DED1D4158FA00597C91 /* LibraryURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */; };
-		9D9E90851D4664CB009ED1F2 /* NSData+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E90841D4664CB009ED1F2 /* NSData+JSON.swift */; };
 		9DB4704821C0C6B0000698F5 /* Webservice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DB4704721C0C6B0000698F5 /* Webservice.plist */; };
 		9DB4704E21C0C933000698F5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4704B21C0C932000698F5 /* Location.swift */; };
 		9DB4704F21C0C933000698F5 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4704C21C0C933000698F5 /* Website.swift */; };
@@ -30,7 +29,6 @@
 		9D927DE41D41536B00597C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D927DE61D41536B00597C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryURLSession.swift; sourceTree = "<group>"; };
-		9D9E90841D4664CB009ED1F2 /* NSData+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+JSON.swift"; sourceTree = "<group>"; };
 		9DB4704721C0C6B0000698F5 /* Webservice.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Webservice.plist; sourceTree = "<group>"; };
 		9DB4704B21C0C932000698F5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9DB4704C21C0C933000698F5 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
@@ -75,12 +73,10 @@
 				9DB4704A21C0C70D000698F5 /* Data Models */,
 				9DB4704621C0C681000698F5 /* Extensions */,
 				9D927DDA1D41536B00597C91 /* AppDelegate.swift */,
-				9D9E90841D4664CB009ED1F2 /* NSData+JSON.swift */,
 				9DE0886D1D8F33600015B345 /* Main.storyboard */,
 				9D927DE11D41536B00597C91 /* Assets.xcassets */,
 				9D927DE31D41536B00597C91 /* LaunchScreen.storyboard */,
 				9D927DE61D41536B00597C91 /* Info.plist */,
-				9DB4704721C0C6B0000698F5 /* Webservice.plist */,
 			);
 			path = SwiftLibraries;
 			sourceTree = "<group>";
@@ -106,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */,
+				9DB4704721C0C6B0000698F5 /* Webservice.plist */,
 			);
 			path = "Web Service";
 			sourceTree = "<group>";
@@ -199,7 +196,6 @@
 				9DFDD88B1D46C4240055F7BD /* LibraryDetailViewController.swift in Sources */,
 				9DB4704F21C0C933000698F5 /* Website.swift in Sources */,
 				9D927DDB1D41536B00597C91 /* AppDelegate.swift in Sources */,
-				9D9E90851D4664CB009ED1F2 /* NSData+JSON.swift in Sources */,
 				9DB4705021C0C933000698F5 /* Library.swift in Sources */,
 				9D927DED1D4158FA00597C91 /* LibraryURLSession.swift in Sources */,
 				9DB4704E21C0C933000698F5 /* Location.swift in Sources */,
@@ -333,7 +329,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lingo-slingers.SwiftLibraries";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -347,7 +343,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lingo-slingers.SwiftLibraries";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

@@ -17,6 +17,7 @@ class LibraryTableViewController: UITableViewController {
     var sectionDictionary = Dictionary<String, [Library]>()
     var sectionTitles = Array<String>.init()
     
+    // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let libraryURLSession = LibraryURLSession();
@@ -47,7 +48,7 @@ class LibraryTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-// MARK: UITableViewDataSource methods
+    // MARK: - UITableViewDataSource and UITableViewDelegate methods
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
@@ -79,7 +80,7 @@ class LibraryTableViewController: UITableViewController {
         return self.sectionTitles
     }
     
-// MARK: navigation
+    // MARK: - navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LibraryDetailViewController" {
             let indexPath = self.tableView.indexPathForSelectedRow!
@@ -90,7 +91,7 @@ class LibraryTableViewController: UITableViewController {
         }
     }
     
-// MARK: private methods
+    // MARK: - private methods
     func setupSectionsWithLibraryArray() {
         for library in libraryArray {
             let firstLetterOfName = String.init(library.name?.first ?? Character.init(""))
