@@ -13,9 +13,9 @@ typealias SessionCompletionHandler = (_ data : Data?, _ response : URLResponse?,
 
 class LibraryTableViewController: UITableViewController {
     
-    var tempLibraryArray : NSMutableArray = []
-    var sectionDictionary : NSMutableDictionary = [:]
-    var sectionTitles : NSArray = []
+    var libraryArray = [Library]()
+    var sectionDictionary = Dictionary<String, [Library]>()
+    var sectionTitles = Array<String>.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +25,16 @@ class LibraryTableViewController: UITableViewController {
                 // Success
                 let statusCode = (response as! HTTPURLResponse).statusCode
                 print("URL Session Task Succeeded: HTTP \(statusCode)")
-                let responseArray = data!.jsonArrayValue
-                for libraryDict in responseArray {
-                    let library = Library.init(fromDictionary: libraryDict as NSDictionary)
-                    self.tempLibraryArray.add(library)
+                let decoder = JSONDecoder()
+                guard let libraryArray = try? decoder.decode([Library].self, from: data!) else {
+                    fatalError("Unable to decode JSON library data")
                 }
+                self.libraryArray = libraryArray
                 DispatchQueue.main.async(execute: {
                     self.setupSectionsWithLibraryArray()
                     self.tableView.reloadData()
                 })
-            }
-            else {
+            } else {
                 // Failure
                 print("URL Session Task Failed: %@", error!.localizedDescription);
             }
@@ -55,16 +54,16 @@ class LibraryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionTitle = self.sectionTitles[section]
-        let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
-        return sectionArray.count
+        let sectionArray = self.sectionDictionary[sectionTitle]
+        return sectionArray?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryTableViewCell")
         let sectionTitle = self.sectionTitles[indexPath.section]
-        let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
-        let library = sectionArray[indexPath.row] as! Library
-        cell?.textLabel?.text = library.libraryName
+        let sectionArray = self.sectionDictionary[sectionTitle]
+        let library = sectionArray?[indexPath.row]
+        cell?.textLabel?.text = library?.name
         return cell!
     }
     
@@ -73,11 +72,11 @@ class LibraryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sectionTitles[section] as? String
+        return self.sectionTitles[section]
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionTitles as? [String]
+        return self.sectionTitles
     }
     
 // MARK: navigation
@@ -86,28 +85,22 @@ class LibraryTableViewController: UITableViewController {
             let indexPath = self.tableView.indexPathForSelectedRow!
             let detailViewController = segue.destination as! LibraryDetailViewController
             let sectionTitle = self.sectionTitles[indexPath.section]
-            let sectionArray = self.sectionDictionary.object(forKey: sectionTitle) as! NSArray
-            detailViewController.detailLibrary = sectionArray[indexPath.row] as? Library
+            let sectionArray = self.sectionDictionary[sectionTitle]
+            detailViewController.detailLibrary = sectionArray?[indexPath.row]
         }
     }
     
 // MARK: private methods
     func setupSectionsWithLibraryArray() {
-        for element in self.tempLibraryArray {
-            if let library : Library = (element as? Library) {
-                let firstLetterOfName = (library.libraryName as NSString).substring(to: 1)
-                if (self.sectionDictionary.object(forKey: firstLetterOfName) == nil) {
-                    let sectionArray : NSMutableArray = [library]
-                    self.sectionDictionary.setObject(sectionArray, forKey: firstLetterOfName as NSCopying)
-                } else {
-                    (self.sectionDictionary[firstLetterOfName] as! NSMutableArray).add(library)
-                }
-                
-            } else {
-                // TODO: error handling for unwrapped optional
+        for library in libraryArray {
+            let firstLetterOfName = String.init(library.name?.first ?? Character.init(""))
+            if (sectionDictionary[firstLetterOfName] == nil) {
+                let sectionArray = [Library]()
+                sectionDictionary[firstLetterOfName] = sectionArray
             }
+            sectionDictionary[firstLetterOfName]?.append(library)
         }
-        let unsortedLetters = self.sectionDictionary.allKeys as! [String]
-        self.sectionTitles = unsortedLetters.sorted() as NSArray
+        let unsortedLetters = self.sectionDictionary.keys
+        sectionTitles = unsortedLetters.sorted()
     }
 }
