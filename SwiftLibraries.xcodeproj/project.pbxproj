@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D07D2F521C3304900D2AE93 /* ViewController+ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D07D2F421C3304800D2AE93 /* ViewController+ErrorDialog.swift */; };
 		9D927DDB1D41536B00597C91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D927DDA1D41536B00597C91 /* AppDelegate.swift */; };
 		9D927DDD1D41536B00597C91 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D927DDC1D41536B00597C91 /* LibraryTableViewController.swift */; };
 		9D927DE21D41536B00597C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D927DE11D41536B00597C91 /* Assets.xcassets */; };
@@ -18,10 +19,11 @@
 		9DB4705021C0C933000698F5 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4704D21C0C933000698F5 /* Library.swift */; };
 		9DE0886E1D8F33600015B345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE0886D1D8F33600015B345 /* Main.storyboard */; };
 		9DFDD88B1D46C4240055F7BD /* LibraryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDD88A1D46C4240055F7BD /* LibraryDetailViewController.swift */; };
-		9DFDD88D1D46F19C0055F7BD /* String+AGELibraryHourFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDD88C1D46F19C0055F7BD /* String+AGELibraryHourFormatting.swift */; };
+		9DFDD88D1D46F19C0055F7BD /* String+LibraryHourFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDD88C1D46F19C0055F7BD /* String+LibraryHourFormatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D07D2F421C3304800D2AE93 /* ViewController+ErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ErrorDialog.swift"; sourceTree = "<group>"; };
 		9D927DD71D41536B00597C91 /* SwiftLibraries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLibraries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D927DDA1D41536B00597C91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D927DDC1D41536B00597C91 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		9DB4704D21C0C933000698F5 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		9DE0886D1D8F33600015B345 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		9DFDD88A1D46C4240055F7BD /* LibraryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDetailViewController.swift; sourceTree = "<group>"; };
-		9DFDD88C1D46F19C0055F7BD /* String+AGELibraryHourFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AGELibraryHourFormatting.swift"; sourceTree = "<group>"; };
+		9DFDD88C1D46F19C0055F7BD /* String+LibraryHourFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+LibraryHourFormatting.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 		9DB4704621C0C681000698F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9DFDD88C1D46F19C0055F7BD /* String+AGELibraryHourFormatting.swift */,
+				9DFDD88C1D46F19C0055F7BD /* String+LibraryHourFormatting.swift */,
+				9D07D2F421C3304800D2AE93 /* ViewController+ErrorDialog.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,8 +194,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D07D2F521C3304900D2AE93 /* ViewController+ErrorDialog.swift in Sources */,
 				9D927DDD1D41536B00597C91 /* LibraryTableViewController.swift in Sources */,
-				9DFDD88D1D46F19C0055F7BD /* String+AGELibraryHourFormatting.swift in Sources */,
+				9DFDD88D1D46F19C0055F7BD /* String+LibraryHourFormatting.swift in Sources */,
 				9DFDD88B1D46C4240055F7BD /* LibraryDetailViewController.swift in Sources */,
 				9DB4704F21C0C933000698F5 /* Website.swift in Sources */,
 				9D927DDB1D41536B00597C91 /* AppDelegate.swift in Sources */,

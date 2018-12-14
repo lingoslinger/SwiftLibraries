@@ -1,5 +1,5 @@
 //
-//  String+AGELibraryHourFormatting.swift
+//  String+LibraryHourFormatting.swift
 //  SwiftLibraries
 //
 //  Created by Allan Evans on 7/25/16.

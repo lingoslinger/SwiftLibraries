@@ -22,6 +22,4 @@ struct Location : Codable {
 		longitude = try values.decodeIfPresent(String.self, forKey: .longitude)
 		needsRecoding = try values.decodeIfPresent(Bool.self, forKey: .needsRecoding)
 	}
-
-
 }
