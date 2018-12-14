@@ -1,21 +1,22 @@
 //
 //	Website.swift
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+//  SwiftLibraries
+//
+//  Created by Allan Evans on 7/21/16.
+//  Copyright © 2016 lingo-slingers.org. All rights reserved.
 
 import Foundation
 
 struct Website : Codable {
 
 	let url : String?
-
-
+    
 	enum CodingKeys: String, CodingKey {
 		case url = "url"
 	}
+    
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		url = try values.decodeIfPresent(String.self, forKey: .url)
 	}
-
-
 }

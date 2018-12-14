@@ -15,7 +15,7 @@ class LibraryTableViewController: UITableViewController {
     
     var libraryArray = [Library]()
     var sectionDictionary = Dictionary<String, [Library]>()
-    var sectionTitles = Array<String>.init()
+    var sectionTitles = [String]()
     
     // MARK: - view lifecycle
     override func viewDidLoad() {
@@ -23,9 +23,6 @@ class LibraryTableViewController: UITableViewController {
         let libraryURLSession = LibraryURLSession();
         let completionHander : SessionCompletionHandler = {(data : Data?, response : URLResponse?, error : Error?) -> Void in
             if (error == nil) {
-                // Success
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                print("URL Session Task Succeeded: HTTP \(statusCode)")
                 let decoder = JSONDecoder()
                 guard let libraryArray = try? decoder.decode([Library].self, from: data!) else {
                     fatalError("Unable to decode JSON library data")
@@ -36,8 +33,9 @@ class LibraryTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 })
             } else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
+                DispatchQueue.main.async {
+                    self.showErrorDialogWithMessage(message: error?.localizedDescription ?? "Unknown network error")
+                }
             }
         }
         libraryURLSession.sendRequest(completionHander)

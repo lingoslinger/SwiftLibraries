@@ -1,6 +1,9 @@
 //
 //	LibraryList.swift
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+//  SwiftLibraries
+//
+//  Created by Allan Evans on 7/21/16.
+//  Copyright © 2016 lingo-slingers.org. All rights reserved.
 
 import Foundation
 
@@ -18,7 +21,6 @@ struct Library : Codable {
 	let website : Website?
 	let zip : String?
 
-
 	enum CodingKeys: String, CodingKey {
 		case address = "address"
 		case city = "city"
@@ -32,6 +34,7 @@ struct Library : Codable {
 		case website = "website"
 		case zip = "zip"
 	}
+    
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		address = try values.decodeIfPresent(String.self, forKey: .address)
@@ -45,7 +48,5 @@ struct Library : Codable {
 		teacherInTheLibrary = try values.decodeIfPresent(String.self, forKey: .teacherInTheLibrary)
         website = try values.decodeIfPresent(Website.self, forKey: .website)
 		zip = try values.decodeIfPresent(String.self, forKey: .zip)
-	}
-
-
+    }
 }
