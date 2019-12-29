@@ -25,7 +25,7 @@ class LibraryDetailViewController: UIViewController {
         let phone = detailLibrary?.phone ?? "Library phone unavailable"
         libraryPhoneTextView.text = "Phone: \(phone)"
         libraryAddressLabel.text = detailLibrary?.address ?? "Library address unavailable"
-        libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedLibraryHours ?? "Library hours unavailable"
+        libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedHours ?? "Library hours unavailable"
         annotateMap()
     }
     
