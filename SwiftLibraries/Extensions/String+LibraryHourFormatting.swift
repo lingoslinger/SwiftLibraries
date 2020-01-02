@@ -15,7 +15,7 @@ extension String {
         var newHoursString = self
         var returnString = "Hours:"
         for currentDayOfWeek in dayOfWeekArray {
-            let index = dayOfWeekArray.index(of: currentDayOfWeek)
+            let index = dayOfWeekArray.firstIndex(of: currentDayOfWeek)
             newHoursString = newHoursString.replacingOccurrences(of: currentDayOfWeek, with: formattedDayOfWeekArray[index!])
         }
         newHoursString = newHoursString.replacingOccurrences(of: ",", with: ":")
