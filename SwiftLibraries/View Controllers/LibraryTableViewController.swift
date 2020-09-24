@@ -3,7 +3,7 @@
 //  SwiftLibraries
 //
 //  Created by Allan Evans on 7/21/16.
-//  Copyright © 2016 lingo-slingers.org. All rights reserved.
+//  Copyright © 2016 lingo-slingers.org. All rights reserved. Seriously.
 //
 
 import UIKit
