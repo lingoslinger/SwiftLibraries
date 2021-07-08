@@ -3,7 +3,7 @@
 //  RadioStations
 //
 //  Created by Allan Evans on 12/5/18.
-//  Copyright © 2018 lingo-slingers.org. All rights reserved.
+//  Copyright © 2018 - 2021 Allan Evans. All rights reserved.
 //
 
 import Foundation
