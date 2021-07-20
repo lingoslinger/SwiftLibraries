@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>libraryServiceURL</key>
-	<string></string>
+	<string>https://data.cityofchicago.org/resource/x8fc-8rcq.json</string>
 </dict>
 </plist>

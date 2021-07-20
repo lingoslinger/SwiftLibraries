@@ -51,6 +51,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2003CF7726A3E20E00A2D478 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9DB4704921C0C6DB000698F5 /* Web Service */,
+				2003CF7826A3E28900A2D478 /* Data Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2003CF7826A3E28900A2D478 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				9DB4704D21C0C933000698F5 /* Library.swift */,
+				9DB4704B21C0C932000698F5 /* Location.swift */,
+				9DB4704C21C0C933000698F5 /* Website.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
 		9D927DCE1D41536B00597C91 = {
 			isa = PBXGroup;
 			children = (
@@ -70,9 +89,8 @@
 		9D927DD91D41536B00597C91 /* SwiftLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				2003CF7726A3E20E00A2D478 /* Shared */,
 				9DB4704521C0C600000698F5 /* View Controllers */,
-				9DB4704921C0C6DB000698F5 /* Web Service */,
-				9DB4704A21C0C70D000698F5 /* Data Models */,
 				9DB4704621C0C681000698F5 /* Extensions */,
 				9D927DDA1D41536B00597C91 /* AppDelegate.swift */,
 				9DE0886D1D8F33600015B345 /* Main.storyboard */,
@@ -108,16 +126,6 @@
 				9DB4704721C0C6B0000698F5 /* Webservice.plist */,
 			);
 			path = "Web Service";
-			sourceTree = "<group>";
-		};
-		9DB4704A21C0C70D000698F5 /* Data Models */ = {
-			isa = PBXGroup;
-			children = (
-				9DB4704D21C0C933000698F5 /* Library.swift */,
-				9DB4704B21C0C932000698F5 /* Location.swift */,
-				9DB4704C21C0C933000698F5 /* Website.swift */,
-			);
-			path = "Data Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W9SQ355FV2;
 				INFOPLIST_FILE = SwiftLibraries/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lingo-slingers.SwiftLibraries";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W9SQ355FV2;
 				INFOPLIST_FILE = SwiftLibraries/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.lingo-slingers.SwiftLibraries";
 				PRODUCT_NAME = "$(TARGET_NAME)";
