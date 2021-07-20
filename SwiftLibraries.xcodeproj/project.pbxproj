@@ -12,7 +12,6 @@
 		9D927DDD1D41536B00597C91 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D927DDC1D41536B00597C91 /* LibraryTableViewController.swift */; };
 		9D927DE21D41536B00597C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D927DE11D41536B00597C91 /* Assets.xcassets */; };
 		9D927DE51D41536B00597C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D927DE31D41536B00597C91 /* LaunchScreen.storyboard */; };
-		9D927DED1D4158FA00597C91 /* LibraryURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */; };
 		9DB4704821C0C6B0000698F5 /* Webservice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DB4704721C0C6B0000698F5 /* Webservice.plist */; };
 		9DB4704E21C0C933000698F5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4704B21C0C932000698F5 /* Location.swift */; };
 		9DB4704F21C0C933000698F5 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4704C21C0C933000698F5 /* Website.swift */; };
@@ -30,7 +29,6 @@
 		9D927DE11D41536B00597C91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D927DE41D41536B00597C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D927DE61D41536B00597C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryURLSession.swift; sourceTree = "<group>"; };
 		9DB4704721C0C6B0000698F5 /* Webservice.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Webservice.plist; sourceTree = "<group>"; };
 		9DB4704B21C0C932000698F5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9DB4704C21C0C933000698F5 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
@@ -54,6 +52,7 @@
 		2003CF7726A3E20E00A2D478 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2003CF7B26A68B3500A2D478 /* Utilities */,
 				9DB4704921C0C6DB000698F5 /* Web Service */,
 				2003CF7826A3E28900A2D478 /* Data Models */,
 			);
@@ -68,6 +67,13 @@
 				9DB4704C21C0C933000698F5 /* Website.swift */,
 			);
 			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		2003CF7B26A68B3500A2D478 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		9D927DCE1D41536B00597C91 = {
@@ -122,7 +128,6 @@
 		9DB4704921C0C6DB000698F5 /* Web Service */ = {
 			isa = PBXGroup;
 			children = (
-				9D927DEC1D4158FA00597C91 /* LibraryURLSession.swift */,
 				9DB4704721C0C6B0000698F5 /* Webservice.plist */,
 			);
 			path = "Web Service";
@@ -209,7 +214,6 @@
 				9DB4704F21C0C933000698F5 /* Website.swift in Sources */,
 				9D927DDB1D41536B00597C91 /* AppDelegate.swift in Sources */,
 				9DB4705021C0C933000698F5 /* Library.swift in Sources */,
-				9D927DED1D4158FA00597C91 /* LibraryURLSession.swift in Sources */,
 				9DB4704E21C0C933000698F5 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

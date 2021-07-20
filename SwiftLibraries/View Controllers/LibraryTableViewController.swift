@@ -20,8 +20,12 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let libraryURLSession = LibraryURLSession();
-        let completionHander : SessionCompletionHandler = {(data : Data?, response : URLResponse?, error : Error?) -> Void in
+        newDataRequest()
+    }
+    
+    private func newDataRequest() {
+        guard let URL = URL(string: "https://data.cityofchicago.org/resource/x8fc-8rcq.json") else {return}
+        URLSession.shared.dataTask(with: URL) { data, response, error in
             if (error == nil) {
                 let decoder = JSONDecoder()
                 guard let libraryArray = try? decoder.decode([Library].self, from: data!) else {
@@ -37,8 +41,7 @@ class LibraryTableViewController: UITableViewController {
                     self.showErrorDialogWithMessage(message: error?.localizedDescription ?? "Unknown network error")
                 }
             }
-        }
-        libraryURLSession.sendRequest(completionHander)
+        }.resume()
     }
 
     // MARK: - UITableViewDataSource and UITableViewDelegate methods
