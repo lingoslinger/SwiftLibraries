@@ -23,7 +23,12 @@ class LibraryDetailViewController: UIViewController {
         super.viewDidLoad()
         title = detailLibrary?.name ?? "Library name not available"
         let phone = detailLibrary?.phone ?? "Library phone unavailable"
-        libraryPhoneTextView.text = "Phone: \(phone)"
+        if phone == "Closed for Construction" {
+            libraryPhoneTextView.textColor = UIColor.red
+            libraryPhoneTextView.text = phone
+        } else {
+            libraryPhoneTextView.text = "Phone: \(phone)"
+        }
         libraryAddressLabel.text = detailLibrary?.address ?? "Library address unavailable"
         libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedHours ?? "Library hours unavailable"
         annotateMap()
