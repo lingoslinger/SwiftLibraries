@@ -23,14 +23,23 @@ class LibraryDetailViewController: UIViewController {
         super.viewDidLoad()
         title = detailLibrary?.name ?? "Library name not available"
         let phone = detailLibrary?.phone ?? "Library phone unavailable"
-        if phone == "Closed for Construction" {
+        
+        var numberOfMatches = 0
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
+            numberOfMatches = detector.numberOfMatches(in: phone, range: NSRange(phone.startIndex..., in: phone))
+        } catch {
+            print(error) // TODO: error handling
+        }
+        
+        if numberOfMatches == 0 {
             libraryPhoneTextView.textColor = UIColor.red
-            libraryPhoneTextView.text = phone
+            libraryPhoneTextView.text = phone // so far, "Closed for Construction" is the only message we have seen here other than an actual phone number
         } else {
             libraryPhoneTextView.text = "Phone: \(phone)"
         }
-        libraryAddressLabel.text = detailLibrary?.address ?? "Library address unavailable"
-        libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedHours ?? "Library hours unavailable"
+        libraryAddressLabel.text = detailLibrary?.address ?? ""
+        libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedHours ?? ""
         annotateMap()
     }
     
