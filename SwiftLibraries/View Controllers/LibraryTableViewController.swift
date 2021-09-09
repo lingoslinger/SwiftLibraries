@@ -13,9 +13,31 @@ typealias SessionCompletionHandler = (_ data : Data?, _ response : URLResponse?,
 
 class LibraryTableViewController: UITableViewController {
     
+    @IBOutlet weak var tableViewToggleBarButtonItem: UIBarButtonItem!
+    
     var libraryArray = [Library]()
     var sectionDictionary = Dictionary<String, [Library]>()
     var sectionTitles = [String]()
+    var tableViewAlphaSort  = true
+    
+    enum SortBy {
+        case location
+        case alpha
+    }
+    
+    // MARK: IBActions
+    
+    @IBAction func tableViewToggleTapped(_ sender: UIBarButtonItem) {
+        if tableViewAlphaSort {
+            // sort by distance to library
+            tableViewToggleBarButtonItem.title = "Alpha"
+            tableViewAlphaSort = false
+        } else {
+            // sort alphabetically
+            tableViewToggleBarButtonItem.title = "Location"
+            tableViewAlphaSort = true
+        }
+    }
     
     // MARK: - view lifecycle
     override func viewDidLoad() {
@@ -32,10 +54,10 @@ class LibraryTableViewController: UITableViewController {
                     fatalError("Unable to decode JSON library data")
                 }
                 self.libraryArray = libraryArray
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async {
                     self.setupSectionsWithLibraryArray()
                     self.tableView.reloadData()
-                })
+                }
             } else {
                 DispatchQueue.main.async {
                     self.showErrorDialogWithMessage(message: error?.localizedDescription ?? "Unknown network error")
@@ -50,15 +72,15 @@ class LibraryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionTitle = self.sectionTitles[section]
-        let sectionArray = self.sectionDictionary[sectionTitle]
+        let sectionTitle = sectionTitles[section]
+        let sectionArray = sectionDictionary[sectionTitle]
         return sectionArray?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryTableViewCell")
-        let sectionTitle = self.sectionTitles[indexPath.section]
-        let sectionArray = self.sectionDictionary[sectionTitle]
+        let sectionTitle = sectionTitles[indexPath.section]
+        let sectionArray = sectionDictionary[sectionTitle]
         let library = sectionArray?[indexPath.row]
         cell?.textLabel?.text = library?.name
         return cell!
@@ -79,10 +101,10 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LibraryDetailViewController" {
-            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let detailViewController = segue.destination as! LibraryDetailViewController
-            let sectionTitle = self.sectionTitles[indexPath.section]
-            let sectionArray = self.sectionDictionary[sectionTitle]
+            let sectionTitle = sectionTitles[indexPath.section]
+            let sectionArray = sectionDictionary[sectionTitle]
             detailViewController.detailLibrary = sectionArray?[indexPath.row]
         }
     }
@@ -97,7 +119,7 @@ class LibraryTableViewController: UITableViewController {
             }
             sectionDictionary[firstLetterOfName]?.append(library)
         }
-        let unsortedLetters = self.sectionDictionary.keys
+        let unsortedLetters = sectionDictionary.keys
         sectionTitles = unsortedLetters.sorted()
     }
 }
