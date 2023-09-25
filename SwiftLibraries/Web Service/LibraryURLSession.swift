@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LibraryURLSession: URLSession {
+class LibraryURLSession {
     func sendRequest(_ completionHandler: (@escaping(SessionCompletionHandler))) {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)

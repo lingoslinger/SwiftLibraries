@@ -20,7 +20,6 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let libraryURLSession = LibraryURLSession();
         let completionHander : SessionCompletionHandler = {(data : Data?, response : URLResponse?, error : Error?) -> Void in
             if (error == nil) {
                 let decoder = JSONDecoder()
@@ -38,7 +37,7 @@ class LibraryTableViewController: UITableViewController {
                 }
             }
         }
-        libraryURLSession.sendRequest(completionHander)
+        LibraryURLSession().sendRequest(completionHander)
     }
 
     // MARK: - UITableViewDataSource and UITableViewDelegate methods
