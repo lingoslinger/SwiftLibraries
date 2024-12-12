@@ -21,11 +21,11 @@ class LibraryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = detailLibrary?.name ?? "Library name not available"
+        title = detailLibrary?.branch ?? "Library name not available"
         let phone = detailLibrary?.phone ?? "Library phone unavailable"
         libraryPhoneTextView.text = "Phone: \(phone)"
         libraryAddressLabel.text = detailLibrary?.address ?? "Library address unavailable"
-        libraryHoursLabel.text = detailLibrary?.hoursOfOperation?.formattedHours ?? "Library hours unavailable"
+        libraryHoursLabel.text = detailLibrary?.serviceHours?.formattedHours ?? "Library hours unavailable"
         annotateMap()
     }
     
@@ -38,7 +38,7 @@ class LibraryDetailViewController: UIViewController {
         let viewRegion = MKCoordinateRegion.init(center: zoomLocation, span: span)
         let point = MKPointAnnotation.init()
         point.coordinate = zoomLocation
-        point.title = detailLibrary?.name
+        point.title = detailLibrary?.branch
         libraryMapView.addAnnotation(point)
         libraryMapView.setRegion(libraryMapView.regionThatFits(viewRegion), animated: true)
     }

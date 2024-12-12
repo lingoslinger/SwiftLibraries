@@ -12,9 +12,9 @@ struct Library : Codable {
 	let address : String?
 	let city : String?
 	let cybernavigator : String?
-	let hoursOfOperation : String?
+	let serviceHours : String?
 	let location : Location?
-	let name : String?
+	let branch : String?
 	let phone : String?
 	let state : String?
 	let teacherInTheLibrary : String?
@@ -25,9 +25,9 @@ struct Library : Codable {
 		case address = "address"
 		case city = "city"
 		case cybernavigator = "cybernavigator"
-		case hoursOfOperation = "hours_of_operation"
+		case serviceHours = "service_hours"
 		case location = "location"
-		case name = "name_"
+		case branch = "branch_"
 		case phone = "phone"
 		case state = "state"
 		case teacherInTheLibrary = "teacher_in_the_library"
@@ -40,9 +40,9 @@ struct Library : Codable {
 		address = try values.decodeIfPresent(String.self, forKey: .address)
 		city = try values.decodeIfPresent(String.self, forKey: .city)
 		cybernavigator = try values.decodeIfPresent(String.self, forKey: .cybernavigator)
-		hoursOfOperation = try values.decodeIfPresent(String.self, forKey: .hoursOfOperation)
+        serviceHours = try values.decodeIfPresent(String.self, forKey: .serviceHours)
 		location = try values.decodeIfPresent(Location.self, forKey: .location)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
+        branch = try values.decodeIfPresent(String.self, forKey: .branch)
 		phone = try values.decodeIfPresent(String.self, forKey: .phone)
 		state = try values.decodeIfPresent(String.self, forKey: .state)
 		teacherInTheLibrary = try values.decodeIfPresent(String.self, forKey: .teacherInTheLibrary)

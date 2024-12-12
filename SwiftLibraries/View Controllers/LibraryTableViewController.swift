@@ -56,7 +56,7 @@ class LibraryTableViewController: UITableViewController {
         let sectionTitle = self.sectionTitles[indexPath.section]
         let sectionArray = self.sectionDictionary[sectionTitle]
         let library = sectionArray?[indexPath.row]
-        cell?.textLabel?.text = library?.name
+        cell?.textLabel?.text = library?.branch
         return cell!
     }
     
@@ -86,7 +86,7 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - private methods
     func setupSectionsWithLibraryArray() {
         for library in libraryArray {
-            let firstLetterOfName = String.init(library.name?.first ?? Character.init(""))
+            let firstLetterOfName = String.init(library.branch?.first ?? Character.init(""))
             if (sectionDictionary[firstLetterOfName] == nil) {
                 let sectionArray = [Library]()
                 sectionDictionary[firstLetterOfName] = sectionArray
